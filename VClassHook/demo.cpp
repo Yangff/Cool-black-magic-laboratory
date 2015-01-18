@@ -19,19 +19,20 @@ public:
 class Joker{
 public:
 	virtual int MyFunc(){
-		printf("B");
+		puts("A");
 	}
 	virtual int MyFunc1(){
-		printf("B");
-	}
-	virtual int MyFunc2(){
-		printf("B");
+		puts("B");puts("C");puts("C");
 	}
 };
 
 int main(){
-	Father * ch = new Child();
-	Joker * jk = new Joker();
-	_vtbhook<Father, Joker>(ch, jk).hook(&Father::MyFunc, &Joker::MyFunc2);
-	//ch->MyFunc();
+	//Father * ch1 = new Child();
+	Father * ch2 = new Child();
+
+//	Joker * jk = new Joker();
+	//_vtbhook<Father, Joker>(ch1, jk).hook(&Father::MyFunc, &Joker::MyFunc4);
+	//ch1->MyFunc();
+	ch2->MyFunc();
+	return 0;
 }
