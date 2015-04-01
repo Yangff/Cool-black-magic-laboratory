@@ -1,0 +1,27 @@
+通过导出一部分host的stl函数, 实现在两个stl之间的数据交换.
+
+layout
+------
+makeconst.cpp
+生成相应的模板对象需要占用的内存大小. 用于计算相应对象的偏移量.
+需要在分发sdk.h之前生成.
+
+sdk.h
+修改了一部分代码, 在player_ai之前加入一些预处理过程, 将 host 中的对象转化为能够正常使用的对象.同时将返回的对象也进行转换.
+
+sdk.cc
+具体的转换代码.
+
+dummystd.h
+一些标准库对象的占位符实现
+
+tinydefines.h
+一些logic对象的裸实现, 使用占位符的假对象.
+
+stdconst.h
+由makeconst生成, 提供各个占位符对象需要占据的内存长度.
+
+注意
+-----
+logic 编译的时候需要实现 makeFuncTable 函数, 在第一次调用player_ai之前把相应的函数列表传递给ai的initWarpper函数.
+
