@@ -581,7 +581,7 @@ namespace _{
     };
 
     template<class TRet, class TOrg>
-    struct VecToReal<std::vector<TOrg>, fake::vector<TRet> > {
+    struct VecToReal {
         static std::vector<TOrg> invoke(fake::vector<TRet> *_){
             size_t len = vector_proxy<TRet>::size(_);
             std::vector<TRet> R;
