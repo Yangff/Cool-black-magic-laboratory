@@ -1,0 +1,12 @@
+SOURCES := sdk.cc Pos.cc const.cc
+CPPFLAGS := -std=c++0x -D_AI__
+AINAME := ai.cc
+TARGETNAME := ai
+
+all:$(TARGETNAME).dll
+
+$(TARGETNAME).dll:$(AINAME) $(SOURCES)
+	g++ $(AINAME) $(SOURCES) -shared $(CPPFLAGS) -o $@
+
+clean:
+	del *.dll
